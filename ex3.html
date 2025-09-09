@@ -1,0 +1,47 @@
+<html>
+
+<head>
+   <title>Event Handling</title>
+</head>
+
+<body>
+
+   <h1>Shopping List</h1>
+   <p>Get it done today</p>
+
+   <!-- add HTML code here -->
+   <input type="text" id="itemInput" placeholder="enter items">
+   <button onclick="addItem()">Enter</button>
+
+
+   <ul>
+      <li>Notebook</li>
+      <li>Jello</li>
+      <li>Spinach</li>
+      <li>Rice</li>
+      <li>Birthday Cake</li>
+      <li>Candles</li>
+   </ul>
+
+   <script>
+
+      // add code here
+      function addItem() {
+         var input = document.getElementById("itemInput");
+         var value = input.value.trim();
+         if (value.length === 0) return; // Ignore empty input
+
+         var ul = document.querySelector("ul");
+         var li = document.createElement("li");
+         var text = document.createTextNode(value);
+         li.appendChild(text);
+         ul.appendChild(li);
+         input.value = "";  // Clear the input field
+      }
+
+
+   </script>
+
+</body>
+
+</html>
