@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <style>
-
         #div1 {
             width: 200px;
             height: 200px;
@@ -10,13 +10,16 @@
         }
 
         /* add CSS code here */
-        
+        .circle {
+            border-radius: 50%;
+        }
     </style>
 
-    
+
 </head>
+
 <body>
-    
+
     <h2>Changing HTML Attribute Value</h2>
 
     <div id="div1"></div>
@@ -24,10 +27,16 @@
     <button onclick="changeShape()">Make a change!</button>
 
     <script>
-        var square=true;
-       // add code here
-        
+
+        // add code here
+        function changeShape() {
+            var box = document.getElementById("div1");
+            box.classList.toggle("circle");
+        }
+
+
     </script>
 
 </body>
+
 </html>
