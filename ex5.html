@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Event Handling</title>
-   
-    <style>
 
+<head>
+    <title>Event Handling</title>
+
+    <style>
         #circle {
             width: 150px;
             height: 150px;
@@ -14,19 +14,31 @@
             padding-top: 60px;
         }
 
-        /* Add CSS code here */ 
-
+        /* Add CSS code here */
+        .square {
+            border-radius: 0 !important;
+            /* The !important ensures it overrides the inline or inherited border-radius. */
+            padding-top: 60px;
+        }
     </style>
 </head>
+
 <body>
-        
-        <div id="circle" onmouseover="mOver(this)" onmouseout="mOut(this)" >
-            Mouse Over Me
-        </div>
-        
-        <script>
-           // add code here
-        </script>
-                
+
+    <div id="circle" onmouseover="mOver(this)" onmouseout="mOut(this)">
+        Mouse Over Me
+    </div>
+
+    <script>
+        // add code here
+        function mOver(element) {
+            element.classList.add("square");
+        }
+        function mOut(element) {
+            element.classList.remove("square");
+        }
+    </script>
+
 </body>
+
 </html>
