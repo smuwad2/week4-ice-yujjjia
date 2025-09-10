@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <body>
 
     <h1>Shopping List</h1>
@@ -17,13 +18,25 @@
     <ul id="shopList"></ul>
 
     <script>
-        
+
         // add code here
-        
-        
+        document.getElementById("select_item").addEventListener("change", function () {
+            var selectedText = this.options[this.selectedIndex].text;
+
+            // Create a new list item
+            var li = document.createElement("li");
+            li.textContent = selectedText;
+
+            // Add to shopping cart list
+            document.getElementById("shopList").appendChild(li);
+        });
+
+
+
     </script>
 
-    
 
-    </body>
+
+</body>
+
 </html>
