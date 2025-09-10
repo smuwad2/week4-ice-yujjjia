@@ -1,61 +1,53 @@
+<!DOCTYPE html>
 <html>
-
 <head>
    <title>Event Handling</title>
 </head>
-
 <body>
-
    <h1>Shopping List</h1>
    <p>Get it done today</p>
-
    <input type="text" id="inputText" placeholder="enter items">
-   <!-- add a button here for adding new item -->
    <button onclick="addItem()">Enter</button>
-
-
-   <ul>
-      <li>Notebook<!--<button>Delete</button></li>-->
-      <li>Jello</li>
-      <li>Spinach</li>
-      <li>Rice</li>
-      <li>Birthday Cake</li>
-      <li>Candles</li>
+   <ul id="shoppingList">
+      <li>Notebook<button onclick="removeItem(this)">delete</button></li>
+      <li>Jello<button onclick="removeItem(this)">delete</button></li>
+      <li>Spinach<button onclick="removeItem(this)">delete</button></li>
+      <li>Rice<button onclick="removeItem(this)">delete</button></li>
+      <li>Birthday Cake<button onclick="removeItem(this)">delete</button></li>
+      <li>Candles<button onclick="removeItem(this)">delete</button></li>
    </ul>
 
    <script>
+      // Remove the parent list item when a delete button is clicked
+      function removeItem(btn) {
+         const li = btn.parentNode;
+         li.parentNode.removeChild(li);
+      }
 
-      // add code here  
+      // Add a new item to the shopping list
+      function addItem() {
+         const input = document.getElementById("inputText");
+         const value = input.value.trim();
+         if (value.length === 0) return;
 
-      function addDeleteButton(li) {
-         var btn = document.createElement("button");
+         // Build the new list item and its delete button
+         const li = document.createElement("li");
+         li.textContent = value;
+
+         // Create delete button
+         const btn = document.createElement("button");
          btn.textContent = "delete";
          btn.onclick = function () {
-            li.remove();
+            removeItem(btn);
          };
+
+         // Append button to li and li to ul
          li.appendChild(btn);
-      }
+         document.getElementById("shoppingList").appendChild(li);
 
-      // Add delete buttons to existing li elements
-      document.querySelectorAll("ul li").forEach(function (li) {
-         addDeleteButton(li);
-      });
-
-      function addItem() {
-         var input = document.getElementById("inputText");
-         var value = input.value.trim();
-         if (value.length === 0) return;
-         var ul = document.querySelector("ul");
-         var li = document.createElement("li");
-         var text = document.createTextNode(value);
-         li.appendChild(text);
-         addDeleteButton(li); // Add delete button to new item
-         ul.appendChild(li);
+         // Clear the input
          input.value = "";
       }
-
    </script>
-
 </body>
-
 </html>
